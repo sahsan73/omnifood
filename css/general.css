@@ -73,6 +73,17 @@ html {
    * from left to right
   */
   overflow-x: hidden;
+
+  /*
+   * This property allows us to move smoothly to
+   * a section of page when we go using navigation,
+   * otherwise it'll jump quickly/harshly.
+   *
+   * Problem is, on Safari browser & Edge, this property
+   * does NOT work at all, so we need write some
+   * JS code for this feature!
+  */
+  scroll-behavior: smooth;
 }
 
 body {

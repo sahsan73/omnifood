@@ -9,9 +9,6 @@ yearEl.textContent = currYear;
 const btnNavEl = document.querySelector(".btn-mobile-nav");
 const headerEl = document.querySelector(".header");
 
-console.log(btnNavEl);
-console.log(headerEl);
-
 btnNavEl.addEventListener("click", function () {
   /*
    * "toggle" method will check, if the class exist
@@ -19,6 +16,35 @@ btnNavEl.addEventListener("click", function () {
    * doesn't, it will add it!
    */
   headerEl.classList.toggle("nav-open");
+});
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// Smooth Scrolling Animation
+const allLinks = document.querySelectorAll("a:link");
+allLinks.forEach(function (link) {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const href = link.getAttribute("href");
+
+    // scroll back to top
+    if (href === "#") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+
+    // scroll to a section
+    if (href !== "#" && href.startsWith("#")) {
+      const sectionEl = document.querySelector(href);
+      sectionEl.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // close mobile nav
+    if (link.classList.contains("main-nav-link")) {
+      headerEl.classList.toggle("nav-open");
+    }
+  });
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////
