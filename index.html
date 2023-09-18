@@ -119,11 +119,37 @@
             </div>
           </div>
           <div class="hero-img-box">
-            <img
-              src="img/hero.png"
-              class="hero-img"
-              alt="Woman enjoying food, meals in storage container, and food bowls on a table"
-            />
+            <!--
+              Some browsers do NOT support webp extension.
+              "source" element will first try to set "img" src to
+              "img/hero.webp", if "webp" extension doesn't work
+              then it will try to set to "img/hero-min.png"
+
+              Now, if you notice that we also have mentioned path/src
+              in the "img" element as because if any browser does NOT
+              support "source" element, then only "src" of img element
+              will be used!! This is also known as fall back, in other
+              words - all browsers should be able to render this image.
+            -->
+            <picture>
+              <source srcset="img/hero.webp" type="image/webp" />
+              <source srcset="img/hero-min.png" type="image/webp" />
+
+              <img
+                src="img/hero-min.png"
+                class="hero-img"
+                alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+              />
+            </picture>
+
+            <!--This hero img is very big in size, so will use compressed img-->
+            <!--
+              <img
+                src="img/hero.png"
+                class="hero-img"
+                alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+              />
+            -->
           </div>
         </div>
       </section>
